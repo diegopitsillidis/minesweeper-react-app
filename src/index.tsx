@@ -1,22 +1,22 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-
-// import { Legend } from './components/Legend';
-
-// const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-// root.render(
-//   <React.StrictMode>
-// 	<Legend />
-//   </React.StrictMode>
-// );
-
-
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
 import { Legend } from './components/Legend';
 
-ReactDOM.render(<Legend />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+  <React.StrictMode>
+	<Legend />
+  </React.StrictMode>
+);
+
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+
+// import { Legend } from './components/Legend';
+
+// ReactDOM.render(<Legend />, document.getElementById('root'));
 
 
 

@@ -22,7 +22,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({children, logo}) =>
   <header className="App-header">
-    {Boolean(logo) ? <img src={logo} className="App-logo" alt="logo" /> :  "No logo found!"}
+    {logo ? <img src={logo} className="App-logo" alt="logo" /> :  "No logo found!"}
     {children}
   </header>;
 
