@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { Legend } from './components/Legend/Legend';
+import { Legend } from './components/Top/Legend';
 
 // const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 // root.render(
