@@ -3,17 +3,17 @@ import { expect, userEvent, within } from '@storybook/test';
 
 import { Page } from './Page';
 
-const meta: Meta<typeof Page> = {
+const meta = {
   title: 'Example/Page',
   component: Page,
   parameters: {
-    // More on Story layout: https://storybook.js.org/docs/configure/story-layout
+    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
     layout: 'fullscreen',
   },
-};
+} satisfies Meta<typeof Page>;
 
 export default meta;
-type Story = StoryObj<typeof Page>;
+type Story = StoryObj<typeof meta>;
 
 export const LoggedOut: Story = {};
 

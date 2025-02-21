@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { Legend } from './components/Legend';
+import { Legend } from './components/Legend/Legend';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
-  <React.StrictMode>
-	<Legend />
-  </React.StrictMode>
-);
+// const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+// root.render(
+//   <React.StrictMode>
+// 	<Legend />
+//   </React.StrictMode>
+// );
 
 
 // import React from 'react';
