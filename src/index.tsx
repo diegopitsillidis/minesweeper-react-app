@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { Legend } from './components/Top/Legend';
+import { Top } from './components/Top/Top';
+
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+    <React.StrictMode>
+        <Top feature='Flag' firstAction='Ctrl' secondAction='Click'>
+            Minesweeper
+        </Top>
+    </React.StrictMode>
+);
+
 
 // const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 // root.render(
 //   <React.StrictMode>
-// 	<Legend />
+// 	<Top feature='Flag' firstAction='Ctrl' secondAction='Click'>
+//         Minesweeper
+//     </Top>
 //   </React.StrictMode>
 // );
 
