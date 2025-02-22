@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export interface GameNameProps {
     /**
      * Text inside the header
-     * */
+     */
     children: string;
 }
 
