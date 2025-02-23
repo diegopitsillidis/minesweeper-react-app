@@ -12,5 +12,5 @@ const Template: StoryFn<LevelProps> = (args) => <Level {...args} />;
 
 export const LevelExample = Template.bind({});
 LevelExample.args = {
-    children: ['Easy', 'Medium', 'Hard'],
+    children: ['Beginner', 'Intermediate', 'Expert'],
 };

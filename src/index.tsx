@@ -2,14 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { Top } from './components/Top/Top';
+import {Scoreboard} from './components/Scoreboard'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>
-        <Top feature='Flag' firstAction='Ctrl' secondAction='Click'>
-            Minesweeper
-        </Top>
+        <>
+            <Top feature='Flag' firstAction='Ctrl' secondAction='Click'>
+                Minesweeper
+            </Top>
+            <Scoreboard 
+                time="000"
+                levels={['beginner', 'intermediate', 'expert']}
+                mines="010"
+                onReset={() => null}
+            />
+        </>
     </React.StrictMode>
 );
 
