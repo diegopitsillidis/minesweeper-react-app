@@ -1,12 +1,16 @@
 import React from 'react';
-import { Meta, StoryFn} from '@storybook/react'
+import { StoryFn, Meta} from '@storybook/react'
 
 import { Cell, CellProps } from './Cell';
+import { Coords } from '@/helpers/Field';
 
 
-export default{
+export default {
     title: 'Grid/Cell',
     component: Cell,
+    args: {
+        coords: [1,1]
+    }
 } as Meta;
 
 const Template: StoryFn<CellProps> = (args) => <Cell {...args} />;
@@ -14,6 +18,8 @@ const Template: StoryFn<CellProps> = (args) => <Cell {...args} />;
 export const CellClosed = Template.bind({});
 CellClosed.args = {
     children: 10,
+    onClick: (coords: Coords) => console.log('Cell clicked', coords),
+    onContextMenu: (coords: Coords) => console.log('Context menu', coords),
 }
 
 export const CellIsEmpty = Template.bind({});
@@ -36,22 +42,22 @@ CellIsWeakFlag.args = {
     children: 12,
 }
 
-export const CellIs1 = Template.bind({});
-CellIs1.args = {
+export const CellWith1 = Template.bind({});
+CellWith1.args = {
     children: 1,
 }
 
-export const CellIs3 = Template.bind({});
-CellIs3.args = {
+export const CellWith3 = Template.bind({});
+CellWith3.args = {
     children: 3,
 }
 
-export const CellIsWeak5 = Template.bind({});
-CellIsWeak5.args = {
+export const CellWith5 = Template.bind({});
+CellWith5.args = {
     children: 5,
 }
 
-export const CellIsWeak8 = Template.bind({});
-CellIsWeak8.args = {
+export const CellWith8 = Template.bind({});
+CellWith8.args = {
     children: 8,
 }

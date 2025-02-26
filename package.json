@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/cli": "^7.26.4",
+    "@storybook/addon-links": "^8.5.8",
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^16.7.13",
