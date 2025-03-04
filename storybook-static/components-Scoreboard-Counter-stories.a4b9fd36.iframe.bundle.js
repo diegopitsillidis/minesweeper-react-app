@@ -1,0 +1,11 @@
+"use strict";(self.webpackChunkmy_app=self.webpackChunkmy_app||[]).push([[825],{"./src/components/Scoreboard/Counter.stories.tsx":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{__webpack_require__.r(__webpack_exports__),__webpack_require__.d(__webpack_exports__,{CounterExample:()=>CounterExample,__namedExportsOrder:()=>__namedExportsOrder,default:()=>__WEBPACK_DEFAULT_EXPORT__});__webpack_require__("./node_modules/react/index.js");var _Counter__WEBPACK_IMPORTED_MODULE_1__=__webpack_require__("./src/components/Scoreboard/Counter.tsx"),react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__=__webpack_require__("./node_modules/react/jsx-runtime.js");const __WEBPACK_DEFAULT_EXPORT__={title:"Scoreboard/Counter",component:_Counter__WEBPACK_IMPORTED_MODULE_1__.p},CounterExample=(args=>(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Counter__WEBPACK_IMPORTED_MODULE_1__.p,{...args})).bind({});CounterExample.args={children:"010"};const __namedExportsOrder=["CounterExample"];CounterExample.parameters={...CounterExample.parameters,docs:{...CounterExample.parameters?.docs,source:{originalSource:"args => <Counter {...args} />",...CounterExample.parameters?.docs?.source}}}},"./src/components/Scoreboard/Counter.tsx":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{__webpack_require__.d(__webpack_exports__,{p:()=>Counter});__webpack_require__("./node_modules/react/index.js");var _emotion_styled__WEBPACK_IMPORTED_MODULE_1__=__webpack_require__("./node_modules/@emotion/styled/dist/emotion-styled.browser.esm.js"),react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__=__webpack_require__("./node_modules/react/jsx-runtime.js");const Counter=_ref=>{let{children}=_ref;return(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Frame,{children})},Frame=_emotion_styled__WEBPACK_IMPORTED_MODULE_1__.A.div`
+    display: inline-block;
+    padding: 0 0.3vw;
+    color: #ec433c;
+    border: 0.15vw inset;
+    line-height: 2vw;
+    letter-spacing: 0.05em;
+    background: #333;
+    text-shadow: 0 0 0.1vw #ec433c;
+`;Counter.__docgenInfo={description:"",methods:[],displayName:"Counter",props:{children:{required:!0,tsType:{name:"string"},description:"Number in the counter"}}}}}]);
+//# sourceMappingURL=components-Scoreboard-Counter-stories.a4b9fd36.iframe.bundle.js.map
