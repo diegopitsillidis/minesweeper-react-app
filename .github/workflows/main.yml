@@ -13,23 +13,35 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
 
+      # Insdtall deps
+      - name: Install npm deps
+          run npm i
+
+      # Run project tests
       - name: Unit Test prep
-        run: |
-          npm install
-          npm install -g jest
+        run: npm install -g jest
       
+      # run project tests
       - name: Tests
         run: npm test
 
+      # Run project linter
+      - name: Lint
+        run: npm run lint
+
+      # Build project
       - name: Build
         run: npm run build
 
       - name: Stryker-Mutator
         run: npm run test-mutate
 
-      - name: Chromatic
-        run: npm run chromatic
+      # Adds to Chromatic as a step in the workflow
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
       
