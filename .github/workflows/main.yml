@@ -29,5 +29,5 @@ jobs:
         run: npm run test-mutate
 
       - name: Chromatic
-        run: npm run chromatic CHROMATIC_PROJECT_TOKEN
+        run: npm run chromatic ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
       
