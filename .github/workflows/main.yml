@@ -18,7 +18,7 @@ jobs:
 
       # Insdtall deps
       - name: Install npm deps
-          run npm i
+        run: run npm i
 
       # Run project tests
       - name: Unit Test prep
