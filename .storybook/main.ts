@@ -18,7 +18,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-webpack5",
     options: {},
   },
-  staticDirs: ["..\\public"],
+  staticDirs: ["../public"],
   core:{builder: "webpack5"},
   webpackFinal: (config) => ({
     ...config,
