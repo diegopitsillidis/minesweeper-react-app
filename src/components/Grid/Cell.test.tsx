@@ -3,12 +3,27 @@ import { render, screen, fireEvent, createEvent } from "@testing-library/react"
 
 import { CellState, Coords } from "@/helpers/Field";
 
-import { Cell, isActiveCell } from "./Cell";
+import { Cell, ClosedFrame , CellProps, isActiveCell } from "./Cell";
 
 describe('Cell component check', () => {
-    const coords: Coords = [1,1]
+    const coords: Coords = [1,1];
 
     for (let cell = CellState.empty; cell <= CellState.weakFlag; cell++) {
+        it('Cell renders correctly', () => {
+            const args = {
+                coords,
+                onClick: jest.fn(),
+                oncontextmenu: jest.fn()
+            } as unknown as CellProps;
+        
+            const { asFragment } = render(<Cell {...args}>{cell}</Cell>);
+        
+            expect(asFragment()).toMatchSnapshot();
+        });
+        it('Closed Frame renders correctly', () => {
+            const { asFragment } = render(<ClosedFrame mouseDown={true} />);
+            expect(asFragment()).toMatchSnapshot();
+        });
         it('Check prevent default contextMenu for every type of cell', () => {
             const props = {
                 coords,

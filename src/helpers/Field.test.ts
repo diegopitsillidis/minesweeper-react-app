@@ -83,6 +83,10 @@ describe("Field Generator", () => {
 
             const flatField = field.flat();
 
+            expect([...field[0], ...field[1]].join('')).not.toBe(
+                '99999999999999999999'
+            )
+
             expect(flatField.filter(cellWithBombFilter)).toHaveLength(bombs);
         });
     });

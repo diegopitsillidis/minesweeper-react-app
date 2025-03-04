@@ -121,19 +121,19 @@ describe('Check Increment Neighbours', () => {
                 [1, 1, 1]
             ]);
         });
-        it('Field 3x3 with two bombs', () => {
+        it('Field 3x3 as synthetic case with neighbour cells have reached max possible bombs', () => {
             expect(
                 incrementNeighbours(
                     [1, 1], 
                     [
                         [0, 1, bomb], 
-                        [0, bomb, 1],
-                        [0, 0, 0]
+                        [8, bomb, 1],
+                        [8, 8, 8]
                     ]
                 )).toStrictEqual([
                     [1, 2, bomb], 
-                    [1, bomb, 2],
-                    [1, 1, 1]
+                    [8, bomb, 2],
+                    [8, 8, 8]
 
                 ]);
         });
