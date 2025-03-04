@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: Stryker-Mutator
-        run: npm run test:mutate
+        run: npm run test-mutate
 
       - name: Chromatic
         run: npm run chromatic
