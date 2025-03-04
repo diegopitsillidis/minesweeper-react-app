@@ -25,6 +25,7 @@
     "watch": "webpack --watch --mode=development",
     "serve": "cross-env NODE_ENV=development webpack serve --mode=development",
     "test": "jest",
+    "test-mutate": "stryker run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "npx eslint ./src --fix",

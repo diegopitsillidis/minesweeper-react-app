@@ -13,6 +13,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Unit Test prep
+        run: |
+          npm install
+          npm install -g jest
       
       - name: Tests
         run: npm test
