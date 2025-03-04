@@ -16,9 +16,9 @@ jobs:
         with: 
           fetch-depth: 0
 
-      # Insdtall deps
+      # Install deps
       - name: Install npm deps
-        run: run npm i
+        run: npm i
 
       # Run project tests
       - name: Unit Test prep
