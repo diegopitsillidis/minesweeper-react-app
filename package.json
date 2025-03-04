@@ -28,7 +28,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "npx eslint ./src --fix",
-    "chromatic": "npx chromatic --project-token=chpt_eb0ef0c6b0c46fe"
+    "chromatic": "npx chromatic --project-token=chpt_eb0ef0c6b0c46fe",
+    "prepare": "husky"
   },
   "eslintConfig": {
     "extends": [
@@ -85,6 +86,7 @@
     "eslint-plugin-storybook": "^0.11.3",
     "globals": "^15.15.0",
     "html-webpack-plugin": "^5.6.3",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "prop-types": "15.8.1",
