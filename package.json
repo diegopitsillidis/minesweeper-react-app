@@ -29,7 +29,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "npx eslint ./src --fix",
-    "chromatic": "npx chromatic --project-token=chpt_eb0ef0c6b0c46fe",
+    "chromatic": "npx chromatic",
     "prepare": "husky"
   },
   "eslintConfig": {
