@@ -13,6 +13,9 @@ export const GameWithHooks: FC = () => {
 
     const [size, bombs] = GameSettings[level];
 
+    const test: Field = [];
+    console.log(bombs, test);
+
     const playerField = emptyFieldGenerator(size, CellState.hidden);
 
     return (
