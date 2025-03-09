@@ -4,7 +4,7 @@ import { Level, LevelProps } from './Level';
 
 it('Level renders correctly', () => {
     const args = {
-        children: ['Beginner', 'Intermediate', 'Expert'],
+        children: ['beginner', 'intermediate', 'expert'],
     } as LevelProps;
 
     const { asFragment } = render(<Level {...args} />);

@@ -3,25 +3,25 @@
 exports[`Level renders correctly 1`] = `
 <DocumentFragment>
   <select
-    class="css-tn7p03"
+    class="css-cvsgr"
   >
     <option
-      class="css-1tp4z63"
-      value="Beginner"
+      class="css-1ibfzol"
+      value="beginner"
     >
-      Beginner
+      beginner
     </option>
     <option
-      class="css-1tp4z63"
-      value="Intermediate"
+      class="css-1ibfzol"
+      value="intermediate"
     >
-      Intermediate
+      intermediate
     </option>
     <option
-      class="css-1tp4z63"
-      value="Expert"
+      class="css-1ibfzol"
+      value="expert"
     >
-      Expert
+      expert
     </option>
   </select>
 </DocumentFragment>

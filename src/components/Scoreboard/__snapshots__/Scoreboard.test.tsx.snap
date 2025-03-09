@@ -11,22 +11,22 @@ exports[`Scoreboard renders correctly 1`] = `
       000
     </div>
     <select
-      class="css-tn7p03"
+      class="css-cvsgr"
     >
       <option
-        class="css-1tp4z63"
+        class="css-1ibfzol"
         value="beginnner"
       >
         beginnner
       </option>
       <option
-        class="css-1tp4z63"
+        class="css-1ibfzol"
         value="intermediate"
       >
         intermediate
       </option>
       <option
-        class="css-1tp4z63"
+        class="css-1ibfzol"
         value="expert"
       >
         expert
@@ -39,9 +39,7 @@ exports[`Scoreboard renders correctly 1`] = `
     </button>
     <div
       class="css-10qcrn4"
-    >
-      010
-    </div>
+    />
   </div>
 </DocumentFragment>
 `;
