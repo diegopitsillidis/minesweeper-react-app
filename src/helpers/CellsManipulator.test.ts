@@ -1,7 +1,7 @@
-import { incrementNeighbours, getNeighboursItems, checkItemInField } from "./CellsManipulator";
+import { incrementNeighbours, getNeighboursItems, checkItemInField, openCell } from "./CellsManipulator";
 import { CellState, Field } from "./Field";
 
-const {empty, bomb } = CellState;
+const {empty: e, hidden: h, bomb: b } = CellState;
 
 describe('Check neighbours selectors', () => {
     it('With [0,0] coords', () => {
@@ -34,7 +34,7 @@ describe('Check neighbours selectors', () => {
 
 describe('checkItemInField tests', () => {
     describe('Simple cases', () => {
-        const field: Field = [[empty]];
+        const field: Field = [[e]];
 
         it('Out of y range', () => {
             expect(checkItemInField([1, 0], field)).toBe(false);
@@ -48,11 +48,11 @@ describe('checkItemInField tests', () => {
     });
     describe('Big Fields', () => {
         const field: Field = [
-            [empty, empty, empty, empty, empty],
-            [empty, empty, empty, empty, empty],
-            [empty, empty, empty, empty, empty],
-            [empty, empty, empty, empty, empty],
-            [empty, empty, empty, empty, empty]
+            [e, e, e, e, e],
+            [e, e, e, e, e],
+            [e, e, e, e, e],
+            [e, e, e, e, e],
+            [e, e, e, e, e]
         ];
 
         it('Out of x range', () => {
@@ -73,19 +73,19 @@ describe('checkItemInField tests', () => {
 describe('Check Increment Neighbours', () => {
     describe('Simple cases', () => {
         it('Field with only one item', () => {
-            expect(incrementNeighbours([0, 0], [[bomb]])).toStrictEqual([[bomb]]);
+            expect(incrementNeighbours([0, 0], [[b]])).toStrictEqual([[b]]);
         });
         it('Field 2x2 with one bomb', () => {
             expect(
                 incrementNeighbours(
                     [0, 0], 
                     [
-                        [bomb, empty], 
-                        [empty, empty]
+                        [b, e], 
+                        [e, e]
                     ]
                 )
             ).toStrictEqual([
-                [bomb, 1], 
+                [b, 1], 
                 [1, 1]
             ]);
         });
@@ -94,13 +94,13 @@ describe('Check Increment Neighbours', () => {
                 incrementNeighbours(
                     [0, 0], 
                     [
-                        [bomb, empty], 
-                        [empty, bomb]
+                        [b, e], 
+                        [e, b]
                     ]
                 )
             ).toStrictEqual([
-                [bomb, 1], 
-                [1, bomb]
+                [b, 1], 
+                [1, b]
             ]);
         });
     });
@@ -110,14 +110,14 @@ describe('Check Increment Neighbours', () => {
                 incrementNeighbours(
                     [1, 1], 
                     [
-                        [empty, empty, empty], 
-                        [empty, bomb, empty],
-                        [empty, empty, empty]
+                        [e, e, e], 
+                        [e, b, e],
+                        [e, e, e]
                     ]
                 )
             ).toStrictEqual([
                 [1, 1, 1], 
-                [1, bomb, 1],
+                [1, b, 1],
                 [1, 1, 1]
             ]);
         });
@@ -126,13 +126,13 @@ describe('Check Increment Neighbours', () => {
                 incrementNeighbours(
                     [1, 1], 
                     [
-                        [0, 1, bomb], 
-                        [8, bomb, 1],
+                        [0, 1, b], 
+                        [8, b, 1],
                         [8, 8, 8]
                     ]
                 )).toStrictEqual([
-                    [1, 2, bomb], 
-                    [8, bomb, 2],
+                    [1, 2, b], 
+                    [8, b, 2],
                     [8, 8, 8]
 
                 ]);
@@ -165,6 +165,116 @@ describe('Check Increment Neighbours', () => {
                 [0, 1, 1, 2, 9, 1, 0, 0, 0],
                 [0, 0, 0, 1, 1, 1, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            ]);
+        });
+    });
+});
+
+describe('Open cell action', () => {
+    describe('Simple cases with loose', () => {
+        it('Open cell with bomb', () => {
+            expect(() =>
+                openCell(
+                    [1,1],
+                    [
+                        [h,h],
+                        [h,h],
+                    ],
+                    [
+                        [1,1],
+                        [1,b],
+                    ]
+                )
+            ).toThrow('Game Over');
+        });
+    });
+    describe('Simple case with number', () => {
+        it('Open cell with state == 1', () => {
+            const playerField = openCell(
+                [1,1],
+                [
+                    [h,h,h],
+                    [h,h,h],
+                    [h,h,h],
+                ],
+                [
+                    [1,1,0],
+                    [9,1,0],
+                    [1,1,0],
+                ]
+            );
+            expect(playerField).toStrictEqual([
+                [h,h,h],
+                [h,1,h],
+                [h,h,h],
+            ]);
+        });
+        it('Open cell with state == 3', () => {
+            const playerField = openCell(
+                [1,1],
+                [
+                    [h,h,h],
+                    [h,h,h],
+                    [h,h,h],
+                ],
+                [
+                    [9,2,0],
+                    [9,3,0],
+                    [9,2,0],
+                ]
+            );
+            expect(playerField).toStrictEqual([
+                [h,h,h],
+                [h,3,h],
+                [h,h,h],
+            ]);
+        });
+    });
+    describe('Simple case with number', () => {
+        it('Open empty cell, stimple 3x3 case', () => {
+            const playerField = openCell(
+                [1,2],
+                [
+                    [h,h,h],
+                    [h,h,h],
+                    [h,h,h],
+                ],
+                [
+                    [1,1,0],
+                    [9,1,0],
+                    [1,1,0],
+                ]
+            );
+            expect(playerField).toStrictEqual([
+                [h,1,0],
+                [h,1,0],
+                [h,1,0],
+            ]);
+        });
+        it('Open empty cell, stimple 5x5 case', () => {
+            const playerField = openCell(
+                [2,2],
+                [
+                    [h,h,h,h,h],
+                    [h,h,h,h,h],
+                    [h,h,h,h,h],
+                    [h,h,h,h,h],
+                    [h,h,h,h,h],
+                ],
+                [
+                    [9,9,1,1,2],
+                    [9,3,1,0,0],
+                    [1,1,0,1,1],
+                    [1,0,0,1,9],
+                    [2,1,0,1,1],
+                ]
+            );
+            expect(playerField).toStrictEqual([
+                [h,h,1,1,2],
+                [h,3,1,0,0],
+                [1,1,0,1,1],
+                [1,0,0,1,h],
+                [2,1,0,1,h],
             ]);
         });
     });

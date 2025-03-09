@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC } from "react";
 import styled from '@emotion/styled';
 
 import { Counter } from './Counter';
 import { Level } from './Level';
 import { Reset } from './Reset';
+import { LevelNames } from "@/modules/GameSettings";
 
 export interface ScoreboardProps {
     /**
@@ -15,23 +16,39 @@ export interface ScoreboardProps {
      */
     levels: string[];
     /**
+     * Bombs in the field
+     */
+    bombs: string;
+    /**
+     * Default level
+     */
+    defaultLevel: LevelNames;
+    /**
      * Action handler when the GameReset button is clicked
      */
     onReset: () => void;
     /**
-     * Bombs in the field
+     * Action handler when the level is changed
      */
-    mines: string;
+    onChangeLevel: (event: ChangeEvent<HTMLSelectElement>) => void;
+    
 }
 
 export const Scoreboard: FC<ScoreboardProps> = ({
-    time, levels, mines, onReset
+    time, 
+    levels, 
+    bombs, 
+    defaultLevel, 
+    onReset, 
+    onChangeLevel: onChange
 }) => (
     <Wrapper>
         <Counter>{time}</Counter>
-        <Level>{levels}</Level>
+        <Level onChange={onChange} value={defaultLevel}>
+            {levels}
+        </Level>
         <Reset onReset={onReset}/>
-        <Counter>{mines}</Counter>
+        <Counter>{bombs}</Counter>
     </Wrapper>
 );
 
