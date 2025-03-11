@@ -22,7 +22,7 @@ export const Grid: FC<GridProps> = ({ children, ...rest}) => (
     <Wrapper size={children.length}>
         {children.map((row, y) => 
             row.map((cell, x) => 
-                <Cell key={`${y}_${x}_${cell}`} coords={[y,x]} {...rest}>
+                <Cell key={`${y},${x}`} coords={[y,x]} {...rest}>
                     {cell}
                 </Cell>
         ))}

@@ -8,7 +8,7 @@ exports[`Grid renders correctly 1`] = `
   >
     <div
       class="css-4dvszr"
-      data-testid="9_0,0"
+      data-testid="0,0"
       role="cell"
     >
       <div
@@ -17,50 +17,50 @@ exports[`Grid renders correctly 1`] = `
     </div>
     <div
       class="css-u2nlwm"
-      data-testid="1_0,1"
+      data-testid="0,1"
       role="cell"
     >
       1
     </div>
     <div
       class="css-1lpo8q3"
-      data-testid="0_0,2"
+      data-testid="0,2"
       role="cell"
     />
     <div
       class="css-u2nlwm"
-      data-testid="1_1,0"
+      data-testid="1,0"
       role="cell"
     >
       1
     </div>
     <div
       class="css-u2nlwm"
-      data-testid="1_1,1"
+      data-testid="1,1"
       role="cell"
     >
       1
     </div>
     <div
       class="css-u2nlwm"
-      data-testid="1_1,2"
+      data-testid="1,2"
       role="cell"
     >
       1
     </div>
     <div
       class="css-z6puck"
-      data-testid="10_2,0"
+      data-testid="2,0"
       role="cell"
     />
     <div
       class="css-z6puck"
-      data-testid="10_2,1"
+      data-testid="2,1"
       role="cell"
     />
     <div
       class="css-u2nlwm"
-      data-testid="1_2,2"
+      data-testid="2,2"
       role="cell"
     >
       1

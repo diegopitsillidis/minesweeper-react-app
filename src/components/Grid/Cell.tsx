@@ -49,7 +49,7 @@ export const Cell: FC<CellProps> = ({ children, coords, ...rest }) => {
         onMouseUp,
         onMouseLeave: onMouseUp,
         mouseDown,
-        'data-testid': `${children}_${coords}`,
+        'data-testid': `${coords}`,
         role: 'cell',
     };
 

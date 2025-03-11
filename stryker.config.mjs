@@ -10,7 +10,8 @@ const config = {
   thresholds: { high: 90, low: 85, break: 80},
   mutate: [
     './src/**/*.ts?(x)',
-    '!./src/**/*@(.test|.spec|Spec|stories|styled).ts?(x)'
+    '!./src/**/*@(.test|.spec|Spec|stories|styled).ts?(x)',
+    '!src/**/__mocks__/**/*',
   ]
 };
 export default config;

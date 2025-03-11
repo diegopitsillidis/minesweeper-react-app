@@ -6,7 +6,10 @@ it('Scoreboard renders correctly', () => {
     const args = {
         time: '000',
         levels: ['beginnner', 'intermediate', 'expert'],
-        mines: '010'
+        bombs: '10',
+        defaultLevel: 'beginner',               // pass defaultLevel
+        onReset: () => null,                   // pass onReset
+        onChangeLevel: () => null,  
     } as ScoreboardProps;
 
     const { asFragment } = render(<Scoreboard {...args} />);

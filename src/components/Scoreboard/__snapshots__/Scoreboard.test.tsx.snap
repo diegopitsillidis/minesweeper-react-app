@@ -39,7 +39,9 @@ exports[`Scoreboard renders correctly 1`] = `
     </button>
     <div
       class="css-10qcrn4"
-    />
+    >
+      10
+    </div>
   </div>
 </DocumentFragment>
 `;
