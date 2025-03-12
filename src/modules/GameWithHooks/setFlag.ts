@@ -1,3 +1,4 @@
+import { detectSolvedPuzzle } from "@/helpers/detectSolvedPuzzle";
 import { CellState, Coords, Field } from "@/helpers/Field";
 
 /**
@@ -5,13 +6,13 @@ import { CellState, Coords, Field } from "@/helpers/Field";
  * @param {Coords} coords
  * @param {Field} playerField
  * @param {Field} gameField
- * @returns {[Field, FlagCounter]}
+ * @returns {[Field, boolean, number]}
  */
 export const setFlag = (
     coords: Coords,
     playerField: Field,
     gameField: Field
-): Field => {
+): [Field, boolean, number] => {
     console.log(gameField);
     const [y, x] = coords;
     const cell = playerField[y][x]
@@ -29,5 +30,7 @@ export const setFlag = (
             playerField[y][x] = flag;
             break;
     }
-    return playerField;
+    const [isSolved, flagCounter] = detectSolvedPuzzle(playerField, gameField);
+
+    return [playerField, isSolved, flagCounter];
 }

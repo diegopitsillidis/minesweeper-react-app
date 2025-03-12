@@ -149,7 +149,7 @@ describe('GameWithHooks test cases', () => {
         })
 
         describe('Game over behavior', () => {
-            it('Player loose the game', () => {
+            it('Player lose the game', () => {
                 const { result } = renderHook(useGame);
                 const { playerField, onClick } = result.current;
 
@@ -178,6 +178,24 @@ describe('GameWithHooks test cases', () => {
                 act(onReset);
                 const { playerField: latestPlayerField } = result.current;
                 expect(flatWithFilter(latestPlayerField, h)).toHaveLength(81);
+            });
+
+            it('Player win the game', () => {
+                const { result } = renderHook(useGame);
+                const { gameField, onClick, onContextMenu } = result.current;
+
+                for(const y of gameField.keys()) {
+                    for (const x of gameField[y].keys()) {
+                        const gameCell = gameField[y][x];
+
+                        act(() => gameCell === b ? onContextMenu([y, x]) : onClick([y, x]));
+                    }
+                }
+
+                const {isGameOver, isWin} = result.current;
+
+                expect(isWin).toBe(true);
+                expect(isGameOver).toBe(true);
             });
         });
     })

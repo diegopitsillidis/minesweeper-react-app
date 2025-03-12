@@ -24,9 +24,10 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "downlevelIteration": true,
   },
   "include": [
     "src"
-, "examples/TddVsTld/mathFunctions.ts", "examples/TddVsTld/mathFunctions.test.ts"  ]
+, "examples/TddVsTld/mathFunctions.ts", "examples/TddVsTld/mathFunctions.test.ts"  ],
 }
