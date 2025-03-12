@@ -4,7 +4,7 @@ import { act, renderHook } from '@testing-library/react';
 import { useGame } from './useGame';
 import { CellState, Field } from '@/helpers/Field';
 
-const { bomb: b } = CellState;
+const { bomb: b, hidden: h } = CellState;
 
 const flatWithFilter = (field: Field, cond: number) =>
   field.flat().filter((v) => v === cond);

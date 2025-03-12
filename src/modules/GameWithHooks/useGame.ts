@@ -1,7 +1,7 @@
 import { Field, generateFieldWithDefaultState, CellState, fieldGenerator, Coords } from '@/helpers/Field';
 import { useState } from 'react';
 import { LevelNames, GameSettings } from '../GameSettings';
-import { openCell } from '@/helpers/CellsManipulator';
+import { openCell } from '@/helpers/openCell';
 
 interface ReturnType {
     level: LevelNames;
