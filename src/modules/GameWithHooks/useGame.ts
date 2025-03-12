@@ -2,6 +2,7 @@ import { Field, generateFieldWithDefaultState, CellState, fieldGenerator, Coords
 import { useState } from 'react';
 import { LevelNames, GameSettings } from '../GameSettings';
 import { openCell } from '@/helpers/openCell';
+import { setFlag } from './setFlag';
 
 interface ReturnType {
     level: LevelNames;
@@ -11,6 +12,7 @@ interface ReturnType {
     playerField: Field;
     gameField: Field;
     onClick: (coords: Coords) => void;
+    onContextMenu: (coords: Coords) => void;
     onChangeLevel: (levl: LevelNames) => void;
     onReset: () => void;
 }
@@ -43,6 +45,11 @@ export const useGame = (): ReturnType => {
         
     }
 
+    const onContextMenu = (coords: Coords) => {
+        const newPlayerField = setFlag(coords, playerField, gameField);
+        setPlayerField([...newPlayerField]);
+    };
+
     const resetHandler = ([size, bombs]: [number, number]) => {
         const newGameField = fieldGenerator(size, bombs / (size * size))
         const newPlayerField = generateFieldWithDefaultState(
@@ -72,6 +79,7 @@ export const useGame = (): ReturnType => {
         playerField,
         gameField,
         onClick,
+        onContextMenu,
         onChangeLevel,
         onReset,
     };

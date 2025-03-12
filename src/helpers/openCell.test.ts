@@ -1,7 +1,7 @@
 import { openCell } from "./openCell";
 import { CellState } from "./Field";
 
-const {empty: e, hidden: h, bomb: b} = CellState;
+const { hidden: h, bomb: b} = CellState;
 
 
 describe('Open cell action', () => {

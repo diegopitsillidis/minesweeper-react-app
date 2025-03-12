@@ -9,6 +9,7 @@ import userEvent from '@testing-library/user-event';
 //jest.mock('@/helpers/Field');
 
 const mockOnClick = jest.fn();
+const mockOnContextMenu = jest.fn();
 const mockOnChangeLevel = jest.fn();
 const mockOnReset = jest.fn();
 
@@ -24,6 +25,7 @@ jest.mock('./useGame', () => ({
             [10, 10]
         ],
         onClick: mockOnClick,
+        onContextMenu: mockOnContextMenu,
         onChangeLevel: mockOnChangeLevel,
         onReset: mockOnReset
     })
@@ -43,7 +45,11 @@ describe('GameWithHooks test cases', () => {
         userEvent.click(screen.getByTestId('0,0'));
         expect(mockOnClick).toHaveBeenCalled();
     });
-    
+    it('Context menu handler on a cell works fine', () => {
+        render(<GameWithHooks />);
+        userEvent.click(screen.getByTestId('0,0'), { button: 2 });
+        expect(mockOnContextMenu).toHaveBeenCalled();
+    })
     it('Reset handler works fine', () => {
         render(<GameWithHooks />);
         userEvent.click(screen.getByRole('button'));

@@ -1,7 +1,7 @@
 import { incrementNeighbours, getNeighboursItems, checkItemInField } from "./CellsManipulator";
 import { CellState, Field } from "./Field";
 
-const {empty: e, hidden: h, bomb: b } = CellState;
+const {empty: e, bomb: b } = CellState;
 
 describe('Check neighbours selectors', () => {
     it('With [0,0] coords', () => {
