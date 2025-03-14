@@ -198,5 +198,90 @@ describe('GameWithHooks test cases', () => {
                 expect(isGameOver).toBe(true);
             });
         });
+        describe('Scoreboard behavior - timer and bomb counter', () => {
+            it('Time should start by clicking a cell', () => {
+                jest.useFakeTimers();
+                const { result } = renderHook(useGame);
+                const timeMustPass = 5;
+
+                for(let i = 0; i < timeMustPass; i++) {
+                    act(() => {
+                        jest.advanceTimersByTime(1000);
+                    });
+                }
+
+                expect(result.current.time).toBe(0);
+
+                act(()=> result.current.onClick([0,0]));
+
+                for(let i = 0; i < timeMustPass; i++) {
+                    act(() => {
+                        jest.advanceTimersByTime(1000);
+                    });
+                }
+
+                expect(result.current.time).toBe(5);
+            });
+            it('Timer should start by flagging a cell', () => {
+                jest.useFakeTimers();
+                const { result } = renderHook(useGame);
+                const timeMustPass = 5;
+
+                for(let i = 0; i < timeMustPass; i++) {
+                    act(() => {
+                        jest.advanceTimersByTime(1000);
+                    });
+                }
+
+                expect(result.current.time).toBe(0);
+                act(()=> result.current.onContextMenu([0,0]));
+
+                for(let i = 0; i < timeMustPass; i++) {
+                    act(() => {
+                        jest.advanceTimersByTime(1000);
+                    });
+                }
+
+                expect(result.current.time).toBe(timeMustPass);
+            });
+            it('Timer should reset value when onReset is called', () => {
+                jest.useFakeTimers();
+                const { result } = renderHook(useGame);
+                const timeMustPass = 5;
+
+                for(let i = 0; i < timeMustPass; i++) {
+                    act(() => {
+                        jest.advanceTimersByTime(1000);
+                    });
+                }
+
+                expect(result.current.time).toBe(0);
+                act(()=> result.current.onContextMenu([0,0]));
+
+                for(let i = 0; i < timeMustPass; i++) {
+                    act(() => {
+                        jest.advanceTimersByTime(1000);
+                    });
+                }
+
+                expect(result.current.time).toBe(timeMustPass);
+                act(result.current.onReset);
+                expect(result.current.time).toBe(0);
+            });
+            it('flagCounter counter increase when onContextMenu calls', () => {
+                const { result } = renderHook(useGame);
+                act(() => result.current.onContextMenu([0, 0]))
+                expect(result.current.flagCounter).toBe(1);
+            });
+            it('flagCounter counter should stop when flagCounter > bombs', () => {
+                const { result } = renderHook(useGame);
+                for( let y = 0; y < 3; y++) {
+                    for (let x = 0; x < 4; x++) {
+                        act(() => result.current.onContextMenu([y, x]))
+                    }
+                }
+                expect(result.current.flagCounter).toBe(10);
+            });
+        });
     })
 });

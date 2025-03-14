@@ -11,7 +11,9 @@ import { CellState, Coords, Field } from "@/helpers/Field";
 export const setFlag = (
     coords: Coords,
     playerField: Field,
-    gameField: Field
+    gameField: Field,
+    prevFlagCounter: number,
+    bombs: number
 ): [Field, boolean, number] => {
     console.log(gameField);
     const [y, x] = coords;
@@ -27,7 +29,9 @@ export const setFlag = (
             playerField[y][x] = hidden;
             break;
         case hidden:
-            playerField[y][x] = flag;
+            if(prevFlagCounter < bombs){
+                playerField[y][x] = flag;
+            }
             break;
     }
     const [isSolved, flagCounter] = detectSolvedPuzzle(playerField, gameField);

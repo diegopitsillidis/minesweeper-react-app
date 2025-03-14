@@ -11,10 +11,12 @@ import { useGame } from './useGame';
 export const GameWithHooks: FC = () => {
     const {
         level,
+        time,
         isGameOver,
         isWin,
         settings,
         playerField,
+        flagCounter,
         onClick,
         onContextMenu,
         onChangeLevel,
@@ -30,8 +32,8 @@ export const GameWithHooks: FC = () => {
             </Top>
             <GameArea>
                 <Scoreboard
-                    time='0'
-                    bombs={String(bombs)}
+                    time={String(time)}
+                    bombs={String(bombs - flagCounter)}
                     levels={GameLevels}
                     defaultLevel={level}
                     onChangeLevel={({
