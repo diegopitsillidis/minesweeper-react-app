@@ -8,6 +8,7 @@ interface ReturnType {
     level: LevelNames;
     time: number;
     isGameOver: boolean;
+    isGameStarted: boolean;
     isWin: boolean;
     settings: [number, number];
     playerField: Field;
@@ -24,10 +25,9 @@ export const useGame = (): ReturnType => {
     
     const [isGameOver, setIsGameOver] = useState(false);
     const [isWin, setIsWin] = useState(false);
-
     const [isGameStarted, setIsGameStarted] = useState(false);
-    const [time, setTime] = useState(0);
 
+    const [time, setTime] = useState(0);
     const [flagCounter, setFlagCounter] = useState(0);
 
     const setGameOver = (isSolved = false) => {
@@ -69,7 +69,7 @@ export const useGame = (): ReturnType => {
         }
 
         try{
-            const [newPlayerField, isSolved, flagCounter] = openCell(
+            const [newPlayerField, isSolved] = openCell(
                 coords, 
                 playerField, 
                 gameField,
@@ -81,7 +81,7 @@ export const useGame = (): ReturnType => {
         } catch (e) {
             console.log(e);
             setPlayerField([... gameField]);
-            setGameOver(false);
+            setGameOver();
         }
         
     }
@@ -119,6 +119,7 @@ export const useGame = (): ReturnType => {
         setIsWin(false);
         setIsGameStarted(false);
         setTime(0);
+        setFlagCounter(0);
     }
 
     const onChangeLevel = (level: LevelNames) => {
@@ -133,6 +134,7 @@ export const useGame = (): ReturnType => {
         level,
         time,
         isGameOver,
+        isGameStarted,
         isWin,
         settings: [size, bombs],
         playerField,

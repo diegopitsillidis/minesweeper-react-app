@@ -125,10 +125,12 @@ describe('GameWithHooks test cases', () => {
 
         it('onReset game handler', () => {
             const { result } = renderHook(useGame);
-            const { playerField, onClick, onReset } = result.current;
+            const { playerField, onClick, onReset, onContextMenu } = result.current;
+            
             expect(playerField).toHaveLength(9);
 
             act(() => onClick([5,0]));
+            act(() => onContextMenu([8,8]))
             expect(flatWithFilter(playerField, 1)).toHaveLength(1);
 
             act(() => onClick([6,0]));
@@ -138,11 +140,16 @@ describe('GameWithHooks test cases', () => {
             const { 
                 playerField: finalPlayerField,
                 isWin,
+                isGameStarted,
                 isGameOver,
-                gameField
+                gameField,
+                flagCounter
             } = result.current;
+            
             expect(isWin).toBe(false);
             expect(isGameOver).toBe(false);
+            expect(isGameStarted).toBe(false);
+            expect(flagCounter).toBe(0);
             expect(flatWithFilter(finalPlayerField, 1)).toHaveLength(0);
             expect(flatWithFilter(finalPlayerField, h)).toHaveLength(81);
             expect(flatWithFilter(gameField, b)).toHaveLength(5);
@@ -150,10 +157,22 @@ describe('GameWithHooks test cases', () => {
 
         describe('Game over behavior', () => {
             it('Player lose the game', () => {
+                jest.useFakeTimers();
                 const { result } = renderHook(useGame);
                 const { playerField, onClick } = result.current;
 
                 act(() => onClick([0, 8]));
+
+                const timeMustPass = 5;
+
+                for (let i = 0; i < timeMustPass; i++) {
+                    act(() => {
+                        jest.advanceTimersByTime(1000);
+                    })
+                }
+
+                expect(result.current.time).toBe(5);
+
                 expect(flatWithFilter(playerField, 1)).toHaveLength(1);
 
                 act(() => onClick([0, 0]));
@@ -161,13 +180,21 @@ describe('GameWithHooks test cases', () => {
 
                 act(() => onClick([0, 7]));
 
+                for (let i = 0; i < timeMustPass; i++) {
+                    act(() => {
+                        jest.advanceTimersByTime(1000);
+                    })
+                }
+
                 const {
                     isWin,
                     isGameOver,
+                    time,
                     playerField: newPlayerField,
                     onReset
                 } = result.current;
 
+                expect(time).toBe(5);
                 expect(isGameOver).toBe(true);
                 expect(isWin).toBe(false);
                 expect(flatWithFilter(newPlayerField, h)).toHaveLength(0);
@@ -179,8 +206,7 @@ describe('GameWithHooks test cases', () => {
                 const { playerField: latestPlayerField } = result.current;
                 expect(flatWithFilter(latestPlayerField, h)).toHaveLength(81);
             });
-
-            it('Player win the game', () => {
+            it('Player win the game when opening last cell', () => {
                 const { result } = renderHook(useGame);
                 const { gameField, onClick, onContextMenu } = result.current;
 
@@ -188,7 +214,54 @@ describe('GameWithHooks test cases', () => {
                     for (const x of gameField[y].keys()) {
                         const gameCell = gameField[y][x];
 
-                        act(() => gameCell === b ? onContextMenu([y, x]) : onClick([y, x]));
+                        act(() => {
+                            if(gameCell === b) {
+                                onContextMenu([y, x])
+                            }
+                        });
+                    }
+                }
+
+                for(const y of gameField.keys()) {
+                    for (const x of gameField[y].keys()) {
+                        const gameCell = gameField[y][x];
+
+                        act(() => {
+                            if(gameCell !== b) {
+                                onClick([y,x])
+                            }
+                        });
+                    }
+                }
+
+                const {isGameOver, isWin} = result.current;
+
+                expect(isWin).toBe(true);
+                expect(isGameOver).toBe(true);
+            });
+            it('Player win the game when flagging last cell', () => {
+                const { result } = renderHook(useGame);
+                const { gameField, onClick, onContextMenu } = result.current;
+
+                for(const y of gameField.keys()) {
+                    for (const x of gameField[y].keys()) {
+                        const gameCell = gameField[y][x];
+                        act(() => {
+                            if(gameCell !== b) {
+                                onClick([y, x])
+                            }
+                        });
+                    }
+                }
+
+                for(const y of gameField.keys()) {
+                    for (const x of gameField[y].keys()) {
+                        const gameCell = gameField[y][x];
+                        act(() => {
+                            if(gameCell === b) {
+                                onContextMenu([y,x])
+                            }
+                        });
                     }
                 }
 
