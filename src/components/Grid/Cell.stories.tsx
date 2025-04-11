@@ -2,7 +2,7 @@ import React from 'react';
 import { StoryFn, Meta} from '@storybook/react'
 
 import { Cell, CellProps } from './Cell';
-import { Coords } from '@/helpers/Field';
+import { Coords } from '@/core/Field';
 
 
 export default {

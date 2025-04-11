@@ -1,5 +1,5 @@
 
-import { CellState, Field } from "@/helpers/Field";
+import { CellState, Field } from "@/core/Field";
 import { setFlag } from "./setFlag";
 
 const { empty: e, hidden: h, bomb: b, flag: f, weakFlag: w} = CellState

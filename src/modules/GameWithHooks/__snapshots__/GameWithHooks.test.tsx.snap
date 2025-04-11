@@ -25,13 +25,7 @@ exports[`GameWithHooks test cases Render game field by default 1`] = `
           <span
             class="css-1eygtyr"
           >
-            Ctrl
-          </span>
-           +  
-          <span
-            class="css-1r5wa4u"
-          >
-            Click
+            Right Click
           </span>
         </code>
       </legend>

@@ -5,8 +5,7 @@ import { Legend } from './Legend';
 it('Legend renders correctly', () => {
     const args = {
         feature: 'Flag',
-        firstAction: 'Ctrl',
-        secondAction: 'Click',
+        firstAction: 'Right Click',
     }
     const { asFragment } = render(<Legend {...args} />);
 

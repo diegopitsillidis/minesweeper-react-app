@@ -11,22 +11,16 @@ export interface LegendProps {
      * First action
      */
     firstAction: string;
-    /**
-     * Second action
-     */
-    secondAction: string;
 }
 
 export const Legend: FC<LegendProps> = ({
     feature,
-    firstAction,
-    secondAction
+    firstAction
 }) => (
     <Parent>
         <strong>{feature}: </strong>
         <FlagComboParent>
-            <FirstAction>{firstAction}</FirstAction> + {' '}
-            <SecondAction>{secondAction}</SecondAction>
+            <FirstAction>{firstAction}</FirstAction>
         </FlagComboParent>
     </Parent>
 )
@@ -43,8 +37,4 @@ const Parent = styled.legend`
 
 const FirstAction = styled.span`
     color: #ec433c;
-`;
-
-const SecondAction = styled.span`
-    color: #2a48ec;
 `;

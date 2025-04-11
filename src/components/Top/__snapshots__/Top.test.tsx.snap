@@ -22,13 +22,7 @@ exports[`Legend renders correctly 1`] = `
         <span
           class="css-1eygtyr"
         >
-          Ctrl
-        </span>
-         +  
-        <span
-          class="css-1r5wa4u"
-        >
-          Click
+          Right Click
         </span>
       </code>
     </legend>

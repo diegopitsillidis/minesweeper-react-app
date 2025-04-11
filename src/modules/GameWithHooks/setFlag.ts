@@ -1,5 +1,5 @@
-import { detectSolvedPuzzle } from "@/helpers/detectSolvedPuzzle";
-import { CellState, Coords, Field } from "@/helpers/Field";
+import { detectSolvedPuzzle } from "@/core/detectSolvedPuzzle";
+import { CellState, Coords, Field } from "@/core/Field";
 
 /**
  * Set flat to the cell

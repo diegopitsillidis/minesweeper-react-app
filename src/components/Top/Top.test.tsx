@@ -6,8 +6,7 @@ it('Legend renders correctly', () => {
     const args = {
         children: 'Minesweeper',
         feature: 'Flag',
-        firstAction: 'Ctrl',
-        secondAction: 'Click'
+        firstAction: 'Right Click',
     }
 
     const { asFragment } = render(<Top {...args} />);

@@ -27,7 +27,7 @@ export const GameWithHooks: FC = () => {
 
     return (
         <Wrapper>
-            <Top feature='Flag' firstAction='Ctrl' secondAction='Click'>
+            <Top feature='Flag' firstAction='Right Click'>
                 Minesweeper
             </Top>
             <GameArea>

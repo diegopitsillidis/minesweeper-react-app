@@ -2,7 +2,7 @@
 
 import { act, renderHook } from '@testing-library/react';
 import { useGame } from './useGame';
-import { CellState, Field } from '@/helpers/Field';
+import { CellState, Field } from '@/core/Field';
 
 const { bomb: b } = CellState;
 

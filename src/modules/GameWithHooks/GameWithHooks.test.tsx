@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event';
 
 //const { empty: e, hidden: h, bomb: b, flag: f } = CellState;
 
-//jest.mock('@/helpers/Field');
+//jest.mock('@/core/Field');
 
 const mockOnClick = jest.fn();
 const mockOnContextMenu = jest.fn();
